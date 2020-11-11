@@ -1,0 +1,634 @@
+"","Customer.ID","City","State","Region","Month","Year","summedSaleByCustomer"
+"1","AB-10015","Oklahoma City","Oklahoma","Central",11,2013,563.94
+"2","AB-10105","Detroit","Michigan","Central",12,2013,901.762999999999
+"3","AB-10255","Los Angeles","California","West",7,2011,19.68
+"4","AB-10255","Los Angeles","California","West",7,2014,479.984
+"5","AC-10660","San Francisco","California","West",3,2013,84.784
+"6","AC-10660","San Francisco","California","West",6,2013,201.584
+"7","AD-10180","Philadelphia","Pennsylvania","East",6,2012,51.072
+"8","AD-10180","Philadelphia","Pennsylvania","East",11,2011,5.88
+"9","AD-10180","Yonkers","New York","East",11,2014,163.96
+"10","AF-10870","San Francisco","California","West",12,2012,7.78
+"11","AG-10270","Philadelphia","Pennsylvania","East",3,2014,15.008
+"12","AG-10300","San Francisco","California","West",9,2014,5.96
+"13","AG-10330","Tulsa","Oklahoma","Central",8,2013,248.82
+"14","AG-10495","Los Angeles","California","West",10,2013,19.296
+"15","AG-10525","Houston","Texas","Central",9,2011,559.71
+"16","AG-10675","Houston","Texas","Central",9,2013,1126.435
+"17","AG-10765","Philadelphia","Pennsylvania","East",9,2011,5.892
+"18","AG-10900","Philadelphia","Pennsylvania","East",12,2012,6.912
+"19","AG-10900","Tucson","Arizona","West",7,2011,1398.203
+"20","AH-10030","San Francisco","California","West",12,2012,991.26
+"21","AH-10075","Arlington","Texas","Central",12,2013,217.44
+"22","AH-10075","Knoxville","Tennessee","South",5,2014,342.24
+"23","AH-10120","Louisville","Kentucky","South",8,2014,201.09
+"24","AH-10690","Detroit","Michigan","Central",12,2012,116.4
+"25","AH-10690","Springfield","Virginia","South",5,2013,1865.626
+"26","AI-10855","Los Angeles","California","West",11,2013,1467.134
+"27","AI-10855","San Francisco","California","West",4,2011,901.762999999999
+"28","AP-10915","Los Angeles","California","West",4,2014,183.61
+"29","AP-10915","Seattle","Washington","West",12,2013,342.812
+"30","AR-10345","Lawrence","Massachusetts","East",9,2014,14.88
+"31","AS-10135","Auburn","Washington","West",11,2013,4.8438
+"32","AS-10240","Cleveland","Ohio","East",6,2014,59.176
+"33","AS-10240","Springfield","Virginia","South",3,2012,5.56
+"34","AS-10285","Dallas","Texas","Central",5,2013,87.4998
+"35","AS-10630","Philadelphia","Pennsylvania","East",8,2011,5.68
+"36","AS-10630","San Francisco","California","West",9,2012,135.936
+"37","AT-10735","Nashville","Tennessee","South",11,2011,148.6998
+"38","AT-10735","Seattle","Washington","West",5,2014,97.16
+"39","AW-10840","Philadelphia","Pennsylvania","East",12,2014,321.248
+"40","AW-10930","Oklahoma City","Oklahoma","Central",11,2013,901.762999999999
+"41","BB-10990","Los Angeles","California","West",7,2011,276.28
+"42","BD-11620","Wilmington","North Carolina","South",6,2011,310.688
+"43","BE-11410","Aurora","Illinois","Central",2,2014,268.576
+"44","BE-11455","Cleveland","Ohio","East",4,2014,979.626
+"45","BF-10975","Columbus","Indiana","Central",11,2013,328.54
+"46","BF-11215","Dallas","Texas","Central",10,2014,55.616
+"47","BF-11275","Columbus","Georgia","South",7,2014,41.91
+"48","BG-11035","Nashville","Tennessee","South",9,2012,1196.131
+"49","BM-11575","Chicago","Illinois","Central",4,2014,195.136
+"50","BM-11785","Seattle","Washington","West",4,2013,28.8
+"51","BN-11515","Los Angeles","California","West",12,2014,12.51
+"52","BN-11515","Seattle","Washington","West",9,2011,260.79
+"53","BP-11050","Chicago","Illinois","Central",12,2013,4.8438
+"54","BP-11185","Philadelphia","Pennsylvania","East",2,2013,109.4238
+"55","BP-11185","Philadelphia","Pennsylvania","East",8,2014,914.434999999999
+"56","BP-11230","Los Angeles","California","West",4,2011,59.92
+"57","BS-11590","Philadelphia","Pennsylvania","East",2,2011,61.96
+"58","BS-11755","Los Angeles","California","West",10,2012,120.666
+"59","BT-11305","Seattle","Washington","West",9,2012,197.916
+"60","BT-11395","San Francisco","California","West",5,2013,9.584
+"61","BT-11680","Houston","Texas","Central",10,2012,4.8438
+"62","BT-11680","Houston","Texas","Central",11,2011,901.762999999999
+"63","BT-11680","Newark","Ohio","East",11,2014,82.4438
+"64","BW-11110","Milwaukee","Wisconsin","Central",3,2012,51.84
+"65","CA-11965","Los Angeles","California","West",4,2012,892.224
+"66","CA-12055","Los Angeles","California","West",8,2013,1016.184
+"67","CA-12265","Wilmington","Delaware","East",9,2014,391.98
+"68","CA-12310","Anaheim","California","West",12,2014,495.3
+"69","CA-12310","Cincinnati","Ohio","East",12,2014,94.784
+"70","CB-12535","Franklin","Massachusetts","East",7,2012,129.52
+"71","CC-12145","Los Angeles","California","West",9,2012,51.52
+"72","CC-12220","Philadelphia","Pennsylvania","East",6,2014,904.116
+"73","CC-12220","San Antonio","Texas","Central",3,2013,962.406
+"74","CC-12430","Columbus","Indiana","Central",12,2014,209.3
+"75","CC-12430","Philadelphia","Pennsylvania","East",11,2013,217.056
+"76","CC-12430","San Francisco","California","West",9,2013,18.192
+"77","CC-12550","Plano","Texas","Central",12,2014,10.368
+"78","CC-12610","Springfield","Virginia","South",8,2011,1510.833
+"79","CC-12670","Bloomington","Indiana","Central",3,2013,134.85
+"80","CC-12670","Los Angeles","California","West",6,2014,940.642999999999
+"81","CC-12670","Tampa","Florida","South",12,2011,623.3478
+"82","CC-12685","Henderson","Kentucky","South",2,2012,364.07
+"83","CD-12790","San Diego","California","West",2,2011,12.35
+"84","CG-12520","Henderson","Kentucky","South",11,2013,993.9
+"85","CJ-11875","Philadelphia","Pennsylvania","East",12,2013,16.52
+"86","CJ-12010","Houston","Texas","Central",3,2014,1753.559
+"87","CJ-12010","Long Beach","New York","East",3,2013,176.784
+"88","CK-12205","Columbus","Ohio","East",11,2013,235.851
+"89","CK-12325","Chesapeake","Virginia","South",3,2011,901.762999999999
+"90","CK-12595","Charlotte","North Carolina","South",11,2014,699.4
+"91","CK-12760","Jacksonville","Florida","South",3,2014,68.742
+"92","CL-12565","Columbia","South Carolina","South",3,2011,354.9
+"93","CL-12565","Lancaster","California","West",3,2014,17.456
+"94","CL-12565","Tulsa","Oklahoma","Central",3,2014,901.762999999999
+"95","CM-11815","El Paso","Texas","Central",12,2011,49.568
+"96","CM-11815","Pasadena","Texas","Central",11,2011,20.736
+"97","CM-11935","Fayetteville","North Carolina","South",2,2013,530.272
+"98","CM-12190","San Diego","California","West",9,2012,443.92
+"99","CM-12445","Houston","Texas","Central",10,2013,132.95
+"100","Co-12640","Florence","South Carolina","South",6,2013,191.88
+"101","CP-12340","Los Angeles","California","West",6,2013,71.088
+"102","CP-12340","Waterbury","Connecticut","East",6,2013,584.77
+"103","CR-12580","San Diego","California","West",11,2014,1101.513
+"104","CR-12625","Columbus","Georgia","South",9,2013,121.78
+"105","CR-12625","Lakewood","New Jersey","East",6,2011,334.68
+"106","CR-12730","Columbus","Ohio","East",8,2013,252.6838
+"107","CS-11845","Chicago","Illinois","Central",12,2011,9.264
+"108","CS-11845","Seattle","Washington","West",2,2014,990.538999999999
+"109","CS-11845","Seattle","Washington","West",9,2012,25.032
+"110","CS-12130","Austin","Texas","Central",12,2012,88.8
+"111","CS-12175","Columbia","Tennessee","South",4,2013,79.12
+"112","CS-12250","Columbia","South Carolina","South",11,2011,542.34
+"113","CS-12355","Salem","Virginia","South",11,2014,35.04
+"114","CS-12400","Chicago","Illinois","Central",11,2014,230.376
+"115","CV-12295","Detroit","Michigan","Central",4,2014,183.42
+"116","CV-12805","Austin","Texas","Central",5,2013,1013.792
+"117","CV-12805","Los Angeles","California","West",2,2014,287.326
+"118","CV-12805","Philadelphia","Pennsylvania","East",4,2014,478.416
+"119","CW-11905","Newark","Delaware","East",5,2014,299.52
+"120","DB-12910","Tampa","Florida","South",12,2014,45.66
+"121","DB-12970","Los Angeles","California","West",5,2014,832.96
+"122","DB-12970","Los Angeles","California","West",12,2012,369.56
+"123","DB-13210","San Francisco","California","West",6,2013,122.352
+"124","DB-13270","Austin","Texas","Central",11,2012,4.8438
+"125","DB-13360","Waterbury","Connecticut","East",4,2014,386.14
+"126","DB-13405","La Porte","Indiana","Central",6,2014,526.45
+"127","DB-13405","Lawrence","Massachusetts","East",8,2012,601.44
+"128","DB-13660","Houston","Texas","Central",11,2012,10.476
+"129","DC-12850","Arlington","Texas","Central",9,2014,56.512
+"130","DC-12850","Houston","Texas","Central",7,2011,502.2
+"131","DD-13570","Houston","Texas","Central",8,2013,4.8438
+"132","DD-13570","Memphis","Tennessee","South",12,2011,39.128
+"133","DG-13300","Seattle","Washington","West",8,2013,19.44
+"134","DJ-13420","San Francisco","California","West",10,2012,45.36
+"135","DK-12835","Portland","Oregon","West",9,2014,42.28
+"136","DK-12985","San Francisco","California","West",5,2014,23.16
+"137","DK-13225","Anaheim","California","West",6,2014,901.762999999999
+"138","DK-13375","Lancaster","Pennsylvania","East",11,2014,221.024
+"139","DK-13375","Seattle","Washington","West",7,2013,656.4
+"140","DL-12865","Cincinnati","Ohio","East",6,2011,32.76
+"141","DL-12925","Long Beach","New York","East",11,2011,733.56
+"142","DL-13315","Chicago","Illinois","Central",2,2011,54.208
+"143","DL-13330","Concord","North Carolina","South",6,2011,24.8598
+"144","DM-13345","Des Moines","Iowa","Central",11,2013,445.4
+"145","DM-13345","Rochester","New York","East",6,2013,376.866
+"146","DM-13525","Palm Coast","Florida","South",7,2011,242.546
+"147","DN-13690","Tulsa","Oklahoma","Central",5,2014,477.3
+"148","DO-13435","Pembroke Pines","Florida","South",11,2012,459.4335
+"149","DO-13645","Houston","Texas","Central",11,2012,76.64
+"150","DO-13645","Lawrence","Massachusetts","East",8,2014,19.44
+"151","DP-13000","Chicago","Illinois","Central",8,2014,64.96
+"152","DP-13390","Columbia","Tennessee","South",12,2011,18.24
+"153","DR-12940","Albuquerque","New Mexico","West",3,2011,302.376
+"154","DS-13030","Seattle","Washington","West",2,2014,654.242
+"155","DS-13180","Detroit","Michigan","Central",8,2012,649.2738
+"156","DV-13465","Minneapolis","Minnesota","Central",6,2011,663.75
+"157","DW-13195","Los Angeles","California","West",8,2011,358.696
+"158","DW-13480","Louisville","Kentucky","South",5,2014,598.31
+"159","DW-13480","San Diego","California","West",11,2013,878.328
+"160","EA-14035","Philadelphia","Pennsylvania","East",7,2013,341.991
+"161","EB-13705","Houston","Texas","Central",3,2012,120.756
+"162","EB-13840","Chicago","Illinois","Central",12,2011,94.428
+"163","EB-13840","Richmond","Virginia","South",5,2011,13.62
+"164","EB-13870","Franklin","Tennessee","South",12,2013,40.68
+"165","EB-13870","Philadelphia","Pennsylvania","East",3,2014,53.982
+"166","EB-13870","Philadelphia","Pennsylvania","East",9,2014,4.8438
+"167","EB-13870","Phoenix","Arizona","West",5,2012,140.986
+"168","EB-13870","San Antonio","Texas","Central",5,2011,127.869
+"169","EB-13930","Richmond","Virginia","South",10,2013,39.92
+"170","EB-13975","Charlotte","North Carolina","South",2,2013,901.762999999999
+"171","EB-13975","Greensboro","North Carolina","South",10,2013,25.4518
+"172","EB-14170","Wilmington","North Carolina","South",10,2014,10.816
+"173","EC-14050","Columbus","Ohio","East",12,2011,5.484
+"174","ED-13885","Houston","Texas","Central",8,2014,143.808
+"175","EH-13765","Philadelphia","Pennsylvania","East",10,2011,249.472
+"176","EH-13765","Seattle","Washington","West",6,2013,93.06
+"177","EH-13945","Tempe","Arizona","West",7,2012,4.8438
+"178","EH-14005","Denver","Colorado","West",4,2013,29.472
+"179","EH-14125","Aurora","Illinois","Central",9,2013,706.2158
+"180","EH-14125","Troy","Ohio","East",4,2013,8.872
+"181","EJ-13720","Los Angeles","California","West",3,2014,1072.115
+"182","EJ-14155","San Diego","California","West",3,2011,626.352
+"183","EM-14065","Jacksonville","North Carolina","South",8,2013,21.504
+"184","EP-13915","Los Angeles","California","West",11,2014,11.56
+"185","FA-14230","Denver","Colorado","West",10,2012,603.434
+"186","FA-14230","Raleigh","North Carolina","South",7,2012,4.8438
+"187","FH-14275","Houston","Texas","Central",7,2014,871.028
+"188","FH-14275","La Porte","Indiana","Central",11,2013,383.14
+"189","FH-14365","Los Angeles","California","West",12,2013,23.04
+"190","FM-14215","Dublin","Ohio","East",4,2014,901.762999999999
+"191","FM-14215","Philadelphia","Pennsylvania","East",7,2013,123.92
+"192","FM-14290","Philadelphia","Pennsylvania","East",4,2012,11.736
+"193","FM-14380","Detroit","Michigan","Central",10,2012,659.88
+"194","FM-14380","Jackson","Mississippi","South",2,2013,264.18
+"195","FO-14305","Chicago","Illinois","Central",3,2012,8.568
+"196","FO-14305","Houston","Texas","Central",11,2014,35.712
+"197","FO-14305","Sacramento","California","West",12,2013,41.99
+"198","FW-14395","Huntsville","Alabama","South",3,2012,19.56
+"199","GA-14515","Dallas","Texas","Central",5,2011,4.8438
+"200","GA-14515","El Paso","Texas","Central",11,2013,17.856
+"201","GA-14515","Los Angeles","California","West",8,2014,99.87
+"202","GA-14515","San Francisco","California","West",4,2012,2026.613
+"203","GB-14530","Philadelphia","Pennsylvania","East",8,2013,421.2278
+"204","GD-14590","Arlington","Virginia","South",5,2011,47.32
+"205","GG-14650","Bristol","Tennessee","South",4,2012,157.794
+"206","GH-14425","Modesto","California","West",11,2014,111.79
+"207","GH-14485","Dallas","Texas","Central",10,2012,72.78
+"208","GH-14665","Chicago","Illinois","Central",11,2012,40.92
+"209","GK-14620","Morristown","New Jersey","East",12,2013,901.762999999999
+"210","GM-14440","Knoxville","Tennessee","South",3,2011,310.528
+"211","GM-14440","Troy","New York","East",7,2014,60.12
+"212","GM-14455","Columbus","Ohio","East",4,2013,624.576
+"213","GM-14500","Providence","Rhode Island","East",6,2013,14.9
+"214","GR-14560","San Francisco","California","West",11,2011,12.96
+"215","GZ-14545","Los Angeles","California","West",7,2014,1264.115
+"216","HA-14905","Franklin","Massachusetts","East",11,2012,11.65
+"217","HA-14920","Fayetteville","North Carolina","South",8,2013,645.136
+"218","HA-14920","Pasadena","California","West",9,2012,671.93
+"219","HD-14785","Philadelphia","Pennsylvania","East",6,2012,52.248
+"220","HF-14995","Los Angeles","California","West",4,2013,556.665
+"221","HG-14965","Colorado Springs","Colorado","West",12,2012,15.696
+"222","HG-14965","San Diego","California","West",9,2011,8.56
+"223","HG-14965","San Francisco","California","West",9,2012,86.82
+"224","HG-15025","Lakeville","Minnesota","Central",11,2014,22
+"225","HM-14860","Huntsville","Texas","Central",9,2013,901.762999999999
+"226","HM-14980","Seattle","Washington","West",4,2014,139.58
+"227","HP-14815","Fort Worth","Texas","Central",11,2012,73.6538
+"228","HR-14770","Milwaukee","Wisconsin","Central",8,2012,687.4
+"229","HR-14770","Richmond","Indiana","Central",2,2014,361.0238
+"230","HR-14830","Philadelphia","Pennsylvania","East",12,2012,456.193
+"231","HW-14935","Seattle","Washington","West",3,2014,265.93
+"232","HZ-14950","Houston","Texas","Central",5,2014,65.424
+"233","IL-15100","Columbus","Ohio","East",10,2012,288
+"234","IL-15100","North Las Vegas","Nevada","West",12,2012,923.182999999999
+"235","IM-15070","Milwaukee","Wisconsin","Central",7,2012,901.762999999999
+"236","JA-15970","Detroit","Michigan","Central",9,2013,477.5
+"237","JA-15970","Philadelphia","Pennsylvania","East",9,2014,987.353999999999
+"238","JB-15400","Bristol","Connecticut","East",9,2012,238.11
+"239","JB-15400","Chicago","Illinois","Central",9,2011,72.608
+"240","JB-16000","Philadelphia","Pennsylvania","East",6,2013,23.616
+"241","JB-16045","Columbus","Ohio","East",12,2013,10.584
+"242","JC-15775","Newark","Delaware","East",12,2011,17.28
+"243","JC-15775","Seattle","Washington","West",10,2012,277.634
+"244","JD-16060","Houston","Texas","Central",3,2012,107.772
+"245","JE-15610","Los Angeles","California","West",11,2014,14.016
+"246","JE-15715","Charlotte","North Carolina","South",9,2013,1743.324
+"247","JE-15745","Los Angeles","California","West",10,2013,61.96
+"248","JE-15745","Oceanside","California","West",11,2014,47.12
+"249","JF-15190","Philadelphia","Pennsylvania","East",10,2014,166.692
+"250","JF-15355","Rochester","New York","East",2,2014,32.67
+"251","JF-15415","Spokane","Washington","West",4,2012,263.78
+"252","JF-15490","San Francisco","California","West",12,2011,243.12
+"253","JG-15160","Atlanta","Georgia","South",9,2013,31.83
+"254","JG-15310","Los Angeles","California","West",5,2013,167.84
+"255","JG-15310","Newark","Ohio","East",7,2013,195.92
+"256","JG-15805","Auburn","New York","East",5,2014,538.02
+"257","JG-15805","Decatur","Illinois","Central",4,2011,101.728
+"258","JH-15910","Chicago","Illinois","Central",11,2014,219.075
+"259","JJ-15445","Newark","Delaware","East",6,2013,9.45
+"260","JK-15205","Marion","Ohio","East",11,2012,205.376
+"261","JK-15325","Dallas","Texas","Central",11,2011,272.8038
+"262","JK-15370","Long Beach","California","West",4,2012,369.912
+"263","JK-15370","Philadelphia","Pennsylvania","East",12,2012,528.0278
+"264","JK-15625","Columbus","Ohio","East",8,2011,10.72
+"265","JK-15625","Jackson","Mississippi","South",5,2011,773.7
+"266","JK-15625","Philadelphia","Pennsylvania","East",8,2012,106.8
+"267","JK-15640","Lakewood","Ohio","East",9,2011,28.8
+"268","JK-16120","Fort Lauderdale","Florida","South",11,2011,799.92
+"269","JL-15130","Lancaster","Ohio","East",4,2014,43.888
+"270","JL-15850","Seattle","Washington","West",5,2012,740.73
+"271","JM-15250","Baltimore","Maryland","East",4,2014,901.762999999999
+"272","JM-15535","Lakewood","California","West",4,2013,257.499
+"273","JM-15655","Lorain","Ohio","East",12,2013,402.645
+"274","JM-15865","Jamestown","New York","East",11,2011,901.762999999999
+"275","JM-15865","Las Vegas","Nevada","West",11,2012,106.88
+"276","JM-16195","Wilmington","North Carolina","South",11,2014,16.272
+"277","JO-15145","Philadelphia","Pennsylvania","East",7,2013,84.784
+"278","JO-15280","Philadelphia","Pennsylvania","East",3,2011,4.8438
+"279","JO-15550","Omaha","Nebraska","Central",5,2014,23.55
+"280","JO-15550","San Francisco","California","West",4,2014,40.74
+"281","JO-15550","Seattle","Washington","West",3,2012,453.576
+"282","JP-15460","Lakewood","New Jersey","East",10,2012,235.97
+"283","JP-16135","Columbus","Georgia","South",9,2014,35.4
+"284","JR-16210","Columbus","Indiana","Central",11,2014,656.22
+"285","JR-16210","Jacksonville","Florida","South",9,2012,717.12
+"286","JR-16210","Springfield","Ohio","East",4,2013,8.904
+"287","JR-16210","Springfield","Oregon","West",9,2014,697.612
+"288","JS-15595","Chicago","Illinois","Central",9,2014,257.508
+"289","JS-16030","Columbus","Ohio","East",2,2011,19.456
+"290","JW-15220","Lakewood","Ohio","East",11,2014,38.864
+"291","JW-15220","San Diego","California","West",9,2013,2056.006
+"292","JW-15955","Seattle","Washington","West",4,2014,174.14
+"293","JW-16075","Philadelphia","Pennsylvania","East",5,2013,88.704
+"294","KB-16240","Miami","Florida","South",3,2011,4.8438
+"295","KB-16315","Cleveland","Ohio","East",12,2011,300.512
+"296","KB-16585","Clinton","Maryland","East",3,2012,89.82
+"297","KB-16585","Dallas","Texas","Central",9,2013,130.328
+"298","KB-16585","Springfield","Oregon","West",11,2012,259.864
+"299","KC-16255","Huntsville","Alabama","South",11,2013,901.762999999999
+"300","KC-16675","Henderson","Kentucky","South",12,2011,12.39
+"301","KC-16675","Seattle","Washington","West",11,2014,446.996
+"302","KD-16345","San Francisco","California","West",6,2014,51.312
+"303","KD-16495","Fayetteville","North Carolina","South",9,2011,106.944
+"304","KD-16495","Jackson","Mississippi","South",12,2012,62.46
+"305","KE-16420","Los Angeles","California","West",4,2011,233.45
+"306","KF-16285","Los Angeles","California","West",3,2013,916.662999999999
+"307","KH-16360","Louisville","Kentucky","South",12,2014,1508.603
+"308","KH-16510","San Francisco","California","West",12,2014,9.68
+"309","KH-16510","Seattle","Washington","West",12,2011,31.05
+"310","KH-16630","Clinton","Maryland","East",9,2012,2145.653
+"311","KH-16630","Seattle","Washington","West",11,2014,23.85
+"312","KM-16225","Sunnyvale","California","West",12,2014,420.234
+"313","KM-16660","Philadelphia","Pennsylvania","East",8,2013,19.312
+"314","KM-16720","Lowell","Massachusetts","East",12,2014,1193.4668
+"315","KM-16720","Vallejo","California","West",4,2011,46.688
+"316","KN-16390","Philadelphia","Pennsylvania","East",3,2012,481.3138
+"317","KN-16390","Santa Barbara","California","West",10,2012,393.186
+"318","KT-16480","Buffalo","New York","East",10,2012,84.8038
+"319","KW-16570","Monroe","Louisiana","South",4,2012,106.5
+"320","LA-16780","Austin","Texas","Central",7,2014,129.6358
+"321","LB-16735","Tallahassee","Florida","South",11,2014,26.72
+"322","LB-16795","Highland Park","Illinois","Central",11,2013,4.8438
+"323","LC-16870","Richmond","Virginia","South",3,2014,874.8
+"324","LC-16885","Oakland","California","West",11,2012,644.904
+"325","LC-16930","Richmond","Indiana","Central",2,2011,82.63
+"326","LC-16930","Sparks","Nevada","West",5,2013,901.762999999999
+"327","LC-17050","Mission Viejo","California","West",2,2011,290.666
+"328","LC-17140","Los Angeles","California","West",4,2013,12.96
+"329","LE-16810","Chicago","Illinois","Central",5,2014,209.1738
+"330","LH-16900","Jonesboro","Arkansas","South",8,2011,638.82
+"331","LH-17020","Louisville","Colorado","West",5,2014,120.783
+"332","LH-17155","Los Angeles","California","West",10,2013,11.744
+"333","LL-16840","Seattle","Washington","West",6,2012,16.64
+"334","LM-17065","Springfield","Ohio","East",12,2012,646.776
+"335","LP-17095","Visalia","California","West",9,2013,310.86
+"336","LR-16915","Durham","North Carolina","South",11,2012,440.144
+"337","LR-17035","Philadelphia","Pennsylvania","East",9,2012,806.409
+"338","LS-16945","Philadelphia","Pennsylvania","East",9,2013,15.936
+"339","LS-16975","Chicago","Illinois","Central",10,2011,863.2378
+"340","LS-16975","Omaha","Nebraska","Central",12,2014,34.5
+"341","LS-17200","Skokie","Illinois","Central",6,2014,26.4278
+"342","LT-17110","San Diego","California","West",11,2012,738.899
+"343","LW-16825","Pasadena","Texas","Central",10,2014,20.64
+"344","MA-17560","Houston","Texas","Central",10,2014,29.472
+"345","MA-17560","Philadelphia","Pennsylvania","East",10,2014,45.528
+"346","MA-17995","Watertown","New York","East",6,2014,191.646
+"347","MB-18085","Roseville","California","West",11,2014,17.31
+"348","MC-17275","Memphis","Tennessee","South",11,2012,59.9478
+"349","MC-17275","Seattle","Washington","West",2,2013,12.96
+"350","MC-17575","Fayetteville","North Carolina","South",12,2014,98.446
+"351","MC-17845","North Las Vegas","Nevada","West",12,2014,901.762999999999
+"352","MC-18100","Bloomington","Illinois","Central",12,2012,234.688
+"353","MC-18100","Los Angeles","California","West",6,2011,139.8
+"354","MC-18130","Los Angeles","California","West",3,2012,11.96
+"355","MC-18130","Los Angeles","California","West",12,2013,1430.129
+"356","ME-17725","Louisville","Kentucky","South",5,2012,48.81
+"357","ME-17725","Salem","Virginia","South",12,2014,701.96
+"358","ME-18010","Marion","Ohio","East",9,2014,51.168
+"359","ME-18010","Port Arthur","Texas","Central",12,2011,5.184
+"360","MG-17680","Philadelphia","Pennsylvania","East",11,2012,47.984
+"361","MG-17695","Chicago","Illinois","Central",6,2012,147.9718
+"362","MH-17290","Philadelphia","Pennsylvania","East",3,2014,987.188
+"363","MH-17620","San Diego","California","West",12,2012,44.46
+"364","MH-17785","Glendale","Arizona","West",3,2013,104.696
+"365","MH-18025","Lafayette","Louisiana","South",10,2014,938.752999999999
+"366","MH-18115","Chester","Pennsylvania","East",3,2014,91.726
+"367","MH-18115","Yonkers","New York","East",11,2014,52.44
+"368","MJ-17740","Detroit","Michigan","Central",3,2014,895.92
+"369","MK-17905","Chicago","Illinois","Central",6,2014,5.936
+"370","MK-18160","Jacksonville","Florida","South",12,2011,252.6438
+"371","ML-17395","Philadelphia","Pennsylvania","East",10,2014,64.38
+"372","ML-17395","Seattle","Washington","West",2,2011,560.55
+"373","ML-17410","Chicago","Illinois","Central",2,2014,11.52
+"374","ML-17410","Columbus","Indiana","Central",5,2014,522.79
+"375","ML-17410","Los Angeles","California","West",9,2013,36.24
+"376","MM-17260","Columbus","Ohio","East",2,2014,147.568
+"377","MM-17920","Newark","Ohio","East",2,2011,42.2518
+"378","MM-17920","Rome","New York","East",4,2013,36.9738
+"379","MM-18055","Aurora","Colorado","West",11,2012,160.272
+"380","MM-18055","Seattle","Washington","West",10,2014,102.656
+"381","MM-18280","Columbus","Georgia","South",12,2012,4.8438
+"382","MN-17935","Memphis","Tennessee","South",11,2014,728.968
+"383","MO-17800","Los Angeles","California","West",9,2012,32.4
+"384","MO-17950","Jacksonville","North Carolina","South",7,2014,24
+"385","MP-17470","Columbus","Ohio","East",2,2013,54.992
+"386","MP-17470","Smyrna","Georgia","South",6,2012,260.31
+"387","MP-17965","Troy","Ohio","East",10,2013,23.976
+"388","MP-18175","Laguna Niguel","California","West",2,2014,203.983
+"389","MP-18175","Troy","Ohio","East",12,2012,14.832
+"390","MS-17365","Los Angeles","California","West",11,2013,1599.273
+"391","MS-17530","Fairfield","Ohio","East",11,2011,21.396
+"392","MS-17530","San Diego","California","West",11,2011,35.34
+"393","MS-17530","Seattle","Washington","West",10,2013,116.96
+"394","MS-17770","Richmond","Virginia","South",7,2011,37.44
+"395","MS-17980","Dallas","Texas","Central",2,2012,20.8
+"396","MS-17980","Houston","Texas","Central",6,2011,47.232
+"397","MS-17980","Springfield","Missouri","Central",12,2012,85.96
+"398","MV-17485","Houston","Texas","Central",12,2014,13.592
+"399","MV-18190","Los Angeles","California","West",6,2013,482.006
+"400","MW-18235","Virginia Beach","Virginia","South",5,2011,1519.733
+"401","MY-18295","Chicago","Illinois","Central",9,2014,109.704
+"402","MZ-17335","Phoenix","Arizona","West",10,2013,174.4118
+"403","MZ-17515","Los Angeles","California","West",4,2011,7.184
+"404","MZ-17515","Redlands","California","West",10,2012,14.28
+"405","NB-18655","Jacksonville","Florida","South",9,2013,383.438
+"406","NB-18655","Milwaukee","Wisconsin","Central",11,2014,143.48
+"407","NB-18655","Philadelphia","Pennsylvania","East",2,2012,77.24
+"408","NB-18655","Tallahassee","Florida","South",10,2014,68.967
+"409","NC-18340","Houston","Texas","Central",5,2011,43.312
+"410","NC-18340","Lansing","Michigan","Central",4,2012,1273.606
+"411","NC-18415","Yonkers","New York","East",5,2011,51.072
+"412","NC-18535","Seattle","Washington","West",11,2014,26.352
+"413","NC-18625","Aurora","Colorado","West",10,2013,752.41
+"414","ND-18370","Glendale","Arizona","West",10,2014,8.559
+"415","ND-18370","Houston","Texas","Central",4,2014,63.4338
+"416","ND-18370","Portland","Oregon","West",11,2011,599.896
+"417","ND-18370","San Francisco","California","West",3,2014,976.828
+"418","NF-18385","Charlotte","North Carolina","South",7,2014,242.352
+"419","NF-18385","Decatur","Illinois","Central",9,2013,756.486
+"420","NF-18475","Omaha","Nebraska","Central",6,2012,269.98
+"421","NG-18430","Quincy","Illinois","Central",11,2012,19.824
+"422","NH-18610","Philadelphia","Pennsylvania","East",3,2011,156.0438
+"423","NK-18490","Deltona","Florida","South",10,2014,17.856
+"424","NK-18490","San Francisco","California","West",10,2013,18.16
+"425","NL-18310","Los Angeles","California","West",5,2013,38.88
+"426","NM-18445","Detroit","Michigan","Central",5,2012,925.83
+"427","NM-18520","Moreno Valley","California","West",9,2012,68.28
+"428","NM-18520","Riverside","California","West",10,2013,22.92
+"429","NP-18325","San Diego","California","West",12,2012,339.334
+"430","NP-18700","Denver","Colorado","West",6,2014,431.928
+"431","NS-18505","Philadelphia","Pennsylvania","East",2,2014,1370.535
+"432","NS-18640","Carlsbad","New Mexico","West",12,2013,24.904
+"433","NS-18640","Houston","Texas","Central",2,2013,73.784
+"434","NW-18400","Las Vegas","Nevada","West",11,2012,208.008
+"435","NZ-18565","Columbus","Ohio","East",11,2013,380.546
+"436","NZ-18565","Seattle","Washington","West",7,2013,4.8438
+"437","OT-18730","Virginia Beach","Virginia","South",10,2014,608.43
+"438","PB-19150","Avondale","Arizona","West",11,2011,150.232
+"439","PB-19210","Philadelphia","Pennsylvania","East",11,2011,62.808
+"440","PC-18745","San Francisco","California","West",11,2013,225.828
+"441","PC-18745","Westfield","New Jersey","East",11,2013,31.56
+"442","PF-19120","Richmond","Kentucky","South",5,2011,40.54
+"443","PF-19120","San Antonio","Texas","Central",4,2012,847.2
+"444","PF-19165","Bloomington","Illinois","Central",9,2011,617.7
+"445","PF-19165","Oakland","California","West",11,2013,479.97
+"446","PF-19225","Los Angeles","California","West",12,2013,11.232
+"447","PG-18820","Louisville","Kentucky","South",7,2012,29.97
+"448","PG-18895","Los Angeles","California","West",12,2012,450.194
+"449","PG-18895","San Francisco","California","West",4,2013,31.56
+"450","PG-18895","Springfield","Virginia","South",6,2014,181.86
+"451","PJ-18835","Seattle","Washington","West",5,2011,85.008
+"452","PJ-19015","Columbus","Ohio","East",8,2014,9.912
+"453","PK-19075","Apple Valley","California","West",12,2013,563.92
+"454","PK-19075","Milwaukee","Wisconsin","Central",3,2014,25.06
+"455","PM-18940","Texas City","Texas","Central",2,2012,301.742
+"456","PO-18850","Hialeah","Florida","South",10,2014,33.472
+"457","PO-18850","Philadelphia","Pennsylvania","East",8,2013,1269.87
+"458","PO-18865","Indianapolis","Indiana","Central",8,2014,338.86
+"459","PO-18865","Los Angeles","California","West",3,2011,935.152
+"460","PS-18760","Los Angeles","California","West",4,2014,562.702
+"461","PS-18970","Henderson","Kentucky","South",11,2012,89.36
+"462","PS-18970","Seattle","Washington","West",3,2014,425.056
+"463","PS-18970","Tulsa","Oklahoma","Central",10,2014,36.44
+"464","PS-19045","Sterling Heights","Michigan","Central",2,2012,79.36
+"465","PT-19090","Jacksonville","Florida","South",10,2014,60.2956
+"466","PV-18985","Cambridge","Massachusetts","East",3,2014,90.6
+"467","PV-18985","Los Angeles","California","West",10,2014,1013.883
+"468","PV-18985","Milwaukee","Wisconsin","Central",2,2013,490.32
+"469","PW-19030","Rome","New York","East",2,2012,90.882
+"470","PW-19240","Louisville","Colorado","West",11,2011,181.788
+"471","PW-19240","San Francisco","California","West",12,2012,359.499
+"472","PW-19240","Wilmington","Delaware","East",11,2012,420.64
+"473","RA-19885","Jacksonville","Florida","South",8,2012,4.8438
+"474","RA-19885","San Francisco","California","West",9,2014,1035.803
+"475","RB-19465","Detroit","Michigan","Central",6,2014,487.96
+"476","RB-19465","Fremont","Nebraska","Central",12,2014,15.92
+"477","RB-19465","Los Angeles","California","West",12,2014,172.26
+"478","RB-19465","Milford","Connecticut","East",3,2013,199.75
+"479","RB-19570","Chicago","Illinois","Central",9,2013,198.744
+"480","RC-19825","Colorado Springs","Colorado","West",12,2013,11.328
+"481","RD-19585","Detroit","Michigan","Central",11,2013,49.44
+"482","RD-19585","Henderson","Kentucky","South",10,2012,104.51
+"483","RD-19720","San Francisco","California","West",7,2011,112.542
+"484","RD-19720","Seattle","Washington","West",5,2013,11.96
+"485","RD-19810","Fayetteville","North Carolina","South",10,2011,22.32
+"486","RD-19930","Dallas","Texas","Central",10,2011,61.4636
+"487","RE-19450","Dallas","Texas","Central",3,2014,26.88
+"488","RE-19450","Decatur","Illinois","Central",6,2011,210.176
+"489","RF-19345","Phoenix","Arizona","West",12,2011,93.174
+"490","RF-19735","Trenton","Michigan","Central",10,2014,277.6138
+"491","RK-19300","Philadelphia","Pennsylvania","East",9,2014,12.192
+"492","RM-19375","Burlington","Vermont","East",2,2014,639.9838
+"493","RO-19780","Arlington","Virginia","South",12,2012,173.94
+"494","RO-19780","San Francisco","California","West",11,2013,29.74
+"495","RP-19270","San Francisco","California","West",10,2011,307.9638
+"496","RP-19390","Houston","Texas","Central",4,2014,9.6876
+"497","RP-19390","Thornton","Colorado","West",10,2012,10.944
+"498","RP-19855","Richmond","Kentucky","South",4,2011,115.36
+"499","RR-19525","Nashville","Tennessee","South",12,2012,97.424
+"500","RW-19540","Los Angeles","California","West",2,2012,136.92
+"501","RW-19630","Columbia","Missouri","Central",12,2011,77.21
+"502","RW-19630","San Francisco","California","West",7,2013,715.64
+"503","RW-19630","Torrance","California","West",12,2013,907.858999999999
+"504","RW-19690","Springfield","Missouri","Central",9,2014,808.92
+"505","SA-20830","Moreno Valley","California","West",2,2011,19.44
+"506","SB-20185","Chicago","Illinois","Central",9,2011,504.55
+"507","SC-20020","Houston","Texas","Central",4,2011,60.208
+"508","SC-20020","Philadelphia","Pennsylvania","East",11,2012,577.584
+"509","SC-20050","Los Angeles","California","West",2,2013,166.292
+"510","SC-20050","Lubbock","Texas","Central",4,2014,11.364
+"511","SC-20050","Norwich","Connecticut","East",5,2012,22.2
+"512","SC-20095","Fayetteville","Arkansas","South",9,2011,901.762999999999
+"513","SC-20230","Arlington","Texas","Central",7,2013,911.256
+"514","SC-20380","Boise","Idaho","West",9,2014,89.97
+"515","SC-20380","El Paso","Texas","Central",3,2011,574.194
+"516","SC-20380","Fairfield","Connecticut","East",3,2014,523.16
+"517","SC-20380","Houston","Texas","Central",9,2013,15.624
+"518","SC-20380","Pembroke Pines","Florida","South",2,2014,120.1398
+"519","SC-20440","New Bedford","Massachusetts","East",8,2012,52.2
+"520","SC-20575","Chicago","Illinois","Central",8,2014,4.8438
+"521","SC-20695","Saint Louis","Missouri","Central",7,2012,52.59
+"522","SC-20770","San Francisco","California","West",6,2012,383.616
+"523","SC-20845","Louisville","Colorado","West",8,2014,266.52
+"524","SD-20485","Midland","Michigan","Central",4,2012,1088.495
+"525","SE-20110","Denver","Colorado","West",3,2014,901.762999999999
+"526","SF-20200","Richmond","Indiana","Central",12,2011,207.24
+"527","SF-20965","Wilmington","Delaware","East",10,2012,77.55
+"528","SG-20080","Redlands","California","West",10,2012,2168.094
+"529","SG-20470","San Francisco","California","West",11,2011,183.61
+"530","SG-20890","Amarillo","Texas","Central",8,2013,19.648
+"531","SH-19975","Chicago","Illinois","Central",5,2013,4.8438
+"532","SH-19975","Pearland","Texas","Central",9,2014,24.62
+"533","SH-19975","San Francisco","California","West",9,2014,163.38
+"534","SJ-20500","Newark","Delaware","East",11,2013,128.4
+"535","SJ-20500","Santa Fe","New Mexico","West",8,2011,92.52
+"536","SK-19990","Toledo","Ohio","East",12,2014,634.8018
+"537","SL-20155","Durham","North Carolina","South",10,2011,67.76
+"538","SL-20155","Jacksonville","Florida","South",3,2012,901.762999999999
+"539","SL-20155","Muskogee","Oklahoma","Central",10,2014,1163.873
+"540","SM-20905","Newark","Ohio","East",5,2013,1043.041
+"541","SM-20950","Broomfield","Colorado","West",9,2013,68.432
+"542","SM-20950","Fairfield","Connecticut","East",8,2012,470.36
+"543","SN-20560","Peoria","Arizona","West",6,2012,101.3118
+"544","SN-20710","Houston","Texas","Central",12,2012,1228.9532
+"545","SN-20710","Los Angeles","California","West",11,2012,221.79
+"546","SO-20335","Los Angeles","California","West",2,2014,154.9
+"547","SP-20545","Chicago","Illinois","Central",4,2013,195.976
+"548","SP-20620","Colorado Springs","Colorado","West",2,2012,34.4438
+"549","SP-20620","Los Angeles","California","West",9,2012,170.136
+"550","SP-20650","San Jose","California","West",5,2012,244.78
+"551","SP-20860","Los Angeles","California","West",3,2014,24.57
+"552","SP-20920","Columbus","Ohio","East",3,2014,315.041
+"553","SS-20140","Columbus","Georgia","South",9,2014,997.83
+"554","SS-20140","Seattle","Washington","West",9,2012,99.2
+"555","SS-20410","Buffalo Grove","Illinois","Central",5,2011,355.455
+"556","SS-20515","Franklin","Wisconsin","Central",8,2013,47.97
+"557","SS-20515","Newark","Delaware","East",7,2011,39.48
+"558","SS-20590","Seattle","Washington","West",5,2013,93.98
+"559","SS-20590","Wichita","Kansas","Central",6,2013,18.9
+"560","SV-20365","Philadelphia","Pennsylvania","East",7,2014,807.898
+"561","SV-20785","Baltimore","Maryland","East",2,2014,35.73
+"562","SV-20785","Burlington","Vermont","East",11,2012,715.2
+"563","SV-20815","Indianapolis","Indiana","Central",5,2012,125.93
+"564","SV-20935","Oceanside","New York","East",3,2013,35.3
+"565","SW-20245","Troy","New York","East",11,2012,109.764
+"566","SW-20455","San Diego","California","West",7,2014,291.988
+"567","SW-20455","San Francisco","California","West",11,2012,119.9
+"568","SW-20455","Seattle","Washington","West",9,2013,901.762999999999
+"569","SW-20755","Seattle","Washington","West",11,2011,94.732
+"570","SZ-20035","Saint Charles","Illinois","Central",12,2012,1349.63
+"571","SZ-20035","Seattle","Washington","West",2,2014,604.768
+"572","TB-21055","Fairfield","Ohio","East",8,2014,16.52
+"573","TB-21055","Troy","New York","East",6,2013,658.2538
+"574","TB-21190","Fayetteville","Arkansas","South",11,2012,6.24
+"575","TB-21250","Bloomington","Illinois","Central",12,2012,12.224
+"576","TB-21280","Phoenix","Arizona","West",6,2011,8.226
+"577","TB-21400","Miami","Florida","South",2,2011,25.248
+"578","TB-21520","Philadelphia","Pennsylvania","East",9,2012,1149.3468
+"579","TB-21595","Columbus","Indiana","Central",3,2014,4.8438
+"580","TB-21595","Lubbock","Texas","Central",2,2011,25.16
+"581","TC-20980","Decatur","Alabama","South",12,2011,521.92
+"582","TC-20980","Long Beach","New York","East",9,2012,85.848
+"583","TC-21475","Seattle","Washington","West",11,2012,141.96
+"584","TC-21535","Los Angeles","California","West",11,2011,6.72
+"585","TD-20995","Virginia Beach","Virginia","South",5,2011,34.2
+"586","TG-21640","Pocatello","Idaho","West",6,2012,495.736
+"587","TH-21115","Philadelphia","Pennsylvania","East",11,2014,893.0358
+"588","TH-21235","Chicago","Illinois","Central",5,2014,111.7128
+"589","TH-21235","Long Beach","California","West",11,2011,4.8438
+"590","TH-21550","Columbia","Maryland","East",8,2014,394.48
+"591","TM-21010","Jackson","Mississippi","South",4,2011,47.79
+"592","TN-21040","Park Ridge","Illinois","Central",5,2013,286.4
+"593","TP-21130","Springfield","Oregon","West",4,2012,35.208
+"594","TP-21415","Freeport","New York","East",11,2012,322.59
+"595","TP-21415","Philadelphia","Pennsylvania","East",8,2014,901.762999999999
+"596","TP-21565","Aurora","Colorado","West",2,2014,337.688
+"597","TR-21325","San Francisco","California","West",12,2011,58.2
+"598","TS-21205","Asheville","North Carolina","South",3,2011,16.272
+"599","TS-21205","Riverside","California","West",8,2013,947.722999999999
+"600","TS-21370","Phoenix","Arizona","West",5,2014,209.979
+"601","TS-21430","Los Angeles","California","West",8,2013,8.26
+"602","TS-21430","Oklahoma City","Oklahoma","Central",11,2013,30.36
+"603","TS-21505","Parker","Colorado","West",12,2014,193.634
+"604","TS-21610","Freeport","Illinois","Central",10,2014,170.572
+"605","TS-21610","San Francisco","California","West",6,2014,920.302999999999
+"606","TS-21655","Houston","Texas","Central",2,2012,694.1238
+"607","TT-21220","Houston","Texas","Central",4,2012,92.052
+"608","TT-21220","Virginia Beach","Virginia","South",10,2012,182.91
+"609","TT-21460","Fort Worth","Texas","Central",12,2012,1262.475
+"610","TT-21460","Houston","Texas","Central",3,2014,117.0638
+"611","TT-21460","Richmond","Indiana","Central",11,2014,2105.743
+"612","TW-21025","Charlottesville","Virginia","South",9,2012,67.96
+"613","TW-21025","Plainfield","New Jersey","East",7,2014,6.48
+"614","TW-21025","Seattle","Washington","West",6,2014,291.136
+"615","VD-21670","Pleasant Grove","Utah","West",8,2011,1938.047
+"616","VF-21715","Columbus","Indiana","Central",12,2014,28.16
+"617","VG-21805","Lakewood","New Jersey","East",3,2014,8.94
+"618","VG-21805","Philadelphia","Pennsylvania","East",8,2013,53.456
+"619","VM-21835","Newark","Delaware","East",3,2013,162.52
+"620","VP-21730","Sterling Heights","Michigan","Central",7,2012,19
+"621","VP-21760","Columbia","Tennessee","South",10,2014,920.290999999999
+"622","VP-21760","Columbus","Ohio","East",5,2012,366.666
+"623","VW-21775","Lakewood","Ohio","East",10,2013,661.176
+"624","VW-21775","San Francisco","California","West",2,2014,21.336
+"625","WB-21850","Los Angeles","California","West",6,2014,1100.62
+"626","WB-21850","Los Angeles","California","West",11,2011,1729.416
+"627","XP-21865","Hollywood","Florida","South",9,2011,337.088
+"628","XP-21865","Los Angeles","California","West",10,2014,35.2
+"629","XP-21865","Westland","Michigan","Central",2,2011,708.616
+"630","YS-21880","Burlington","North Carolina","South",7,2014,9.552
+"631","YS-21880","Columbus","Georgia","South",5,2014,34.5
+"632","YS-21880","Los Angeles","California","West",12,2012,457.96
+"633","ZC-21910","Houston","Texas","Central",6,2014,155.8636
