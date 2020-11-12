@@ -32,9 +32,22 @@ shinyUI(fluidPage(
                      mainPanel(
                          tabPanel("Sales Prediction", 
                                   leafletOutput("mymap")
-                         ),
-                         
-                         tabPanel("temp")
+                         )
+                     )
+                 )
+        ),
+        tabPanel("[Futer Release - Recommendation Service]", fluid = TRUE,
+                 sidebarLayout(
+                     sidebarPanel(
+                         helpText("
+                            In the future release, the following button will generate a list of the products fitting the customers' preference for the advertisement.
+                         "),
+                         actionButton("recommend", "Generate")
+                     ),
+                     mainPanel(
+                         tabPanel("Contruction is going on", 
+                              helpText("The Service will be later release. In this release, the Market Basket Analysis and The Apriori Algorithm to see what kind of products that cutomers usually purchase together, which is tated in the report, will generate the brochure or the list of the products satisfying the customers' taste.")
+                         )
                      )
                  )
         )
