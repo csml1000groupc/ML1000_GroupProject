@@ -1,0 +1,1406 @@
+---
+title: "Assignment 3 - Predicting Sales for Superstore"
+author: "Jinping Bai, Joshua Dalphy, Choongil Kim and Gouri Kulkarni"
+date: "Thursday, November 12th 2020"
+output: 
+  pdf_document: 
+    fig_height: 4
+    fig_width: 5
+    number_sections: yes 
+    toc: yes
+    toc_depth: 5
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Business Introduction
+
+## Objective
+
+The objective of this project is to develop a model or models which could be used to predict the amount of sales that a global superstore could generate, given their past transaction data.
+
+```{r}
+########################################################################################### Data Description ###########################
+####################################################################
+```
+# Data Description
+
+The dataset used for assignment 3 was obtained from https://www.kaggle.com/jr2ngb/superstore-data and contains four years (2011-2015) worth of retail data belonging to a global superstore. The dataset has 51,291 observations and 24 features, which are described in the following table:
+
+Variable Name | Description
+--------------|-------------
+Row ID        | Unique numbered identifier for each row
+Order ID      | Unique numbered identifier for each order
+Order Date    | Date the order was placed - dd/mm/yyyy
+Ship Date     | Date the order was shipped - dd/mm/yyyy
+Ship Mode     | Mode of shipment - First class, same day, standard class and second class
+Customer ID   | Unique numbered identifier for each customer
+Customer Name | The name of the customer - <first name, last name>
+Segment       | The business segment - Consumer, home office and corporate
+City          | The city name where the order is to be shipped
+State         | The state name where the order is to be shipped
+Country       | The country name where the order is to be shipped
+Postal Code   | The postal code belonging to the individual
+Market        | The market where the order took place - Africa, APAC, Canada, EMEA, EU, LATAM and US
+Region        | The region where the sale took place - Africa, Canada, Caribbean, Central, Central Asia, East, EMEA, North, North Asia, Oceania, South, Southeast Asia and West  
+Product ID    | Unique numbered identifier for each product
+Category      | The product's category - Furniture, office supplies and technology
+Sub-Category  | The product's subcategory
+Product Name  | The name of the product
+Sales         | The sales value in dollars
+Quantity      | The quantity of the order
+Discount      | The value of the discount if applicable in dollars
+Profit        | The value of profit associated to each order in dollars
+Shipping Cost | The cost of shipping in dollars
+Order Priority| The order's priority - Critical, high, medium and low
+
+
+# Data Exploration
+
+```{r}
+######################################################################################### Data Exploration #############################
+####################################################################
+```
+## General Data Exploration 
+
+In this section of the report, we will explore the dataset in order to help us better understand both the categorical features and the behavior of the data as a whole. 
+
+```{r}
+# Load in the raw data
+data=read.csv(file.choose(), header = TRUE, na.strings = c("NA","","#NA"))
+# Create a copy of the data
+copy_data = data
+```
+
+```{r, include=FALSE}
+# Delete Columns
+raw_data = copy_data[ , -c(2,6,7,12,15,18)]
+
+# Specify columns as dates
+raw_data$Order.Date = as.Date(raw_data$Order.Date,"%d/%m/%Y")
+raw_data$Ship.Date = as.Date(raw_data$Ship.Date,"%d/%m/%Y")
+```
+
+```{r, include=FALSE}
+#check # of rows
+ncol(raw_data)
+nrow(raw_data)
+```
+To begin the data exploration, we first start by inspecting the first few rows of the dataset.
+
+```{r}
+# Preview data structure with HEAD(), STR(), and SUMMARY()
+head(raw_data,4)
+```
+
+Then, the internal structure of the dataset is outputted.
+
+```{r}
+str(raw_data)
+```
+Then the summary function is used to understand the features at a high level and to retrieve the basic descriptive statistics.
+```{r}
+summary(raw_data)
+```
+
+```{r}
+# Determine the number of unique values in some of the categorical variables
+n_Cities = unique(raw_data$City)
+n_States = unique(raw_data$State)
+n_Country = unique(raw_data$Country)
+n_Region = unique(raw_data$Region)
+
+n_Market = unique(raw_data$Market)
+n_Category = unique(raw_data$Category)
+n_SubCategory = unique(raw_data$Sub.Category)
+
+```
+During the exploration of key categorical variables, plotting the frequency distribution can help us better understand the features.
+
+```{r}
+# Look at frequency distribution for certain categorical variables
+
+barplot(table(raw_data$Market),
+        main = 'Market Frequency Plot',
+        ylab = 'Frequency',
+        )
+```
+
+```{r}
+barplot(table(raw_data$Region),
+        main = 'Region Frequency Plot',
+        ylab = 'Frequency', las = 3
+        )
+```
+
+```{r}
+barplot(table(raw_data$Order.Priority),
+        main = 'Order Priority Frequency Plot',
+        ylab = 'Frequency',
+        )
+```
+
+```{r}
+barplot(table(raw_data$Segment),
+        main = 'Segment Frequency Plot',
+        ylab = 'Frequency',
+        )
+```
+
+```{r}
+barplot(table(raw_data$Category),
+        main = 'Category Frequency Plot',
+        ylab = 'Frequency',
+        )
+```
+
+```{r}
+barplot(table(raw_data$Sub.Category),
+        main = 'Sub-CategoryFrequency Plot',
+        ylab = 'Frequency', las = 3
+        )
+```
+
+```{r}
+###################################################################################### Numeric Data Exploration ########################
+####################################################################
+```
+## Numeric Data Exploration
+
+In this section of the report, we will explore the numeric features to further our understanding of the chosen data.
+
+```{r}
+# Let's retrieve a subset of the data table
+colNames <- c("Row.ID","Sales","Quantity","Discount","Profit","Shipping.Cost")
+
+numeric_data <- raw_data[colNames]
+```
+
+To begin the numeric data exploration, the distribution of each numeric feature was plotted and shown in the figure below
+
+```{r}
+library(ggplot2)
+library(reshape2)
+
+# Observe the distribution of the data using histograms
+melt_data = melt(numeric_data, id.vars=c("Row.ID"))
+
+ggplot(data = melt_data, mapping = aes(x = value)) + geom_histogram(bins = 10) + facet_wrap(~variable, scales = 'free_x')
+```
+
+Then, we plotted the profits as a function of time in order to better understand how this feature varied throughout the years.
+
+```{r}
+# Look in more details of profits
+min_profit = min(raw_data$Profit)
+max_profit = max(raw_data$Profit)
+
+plot(raw_data$Order.Date,raw_data$Profit,ylim = c(min_profit,max_profit),main = "Profit vs. Time")
+```
+
+Similarly, the sales feature was plotted as a function of time.
+
+```{r}
+# Look in more details Sales
+min_sales = min(raw_data$Sales)
+max_sales = max(raw_data$Sales)
+
+plot(raw_data$Order.Date,raw_data$Sales, ylim = c(min_sales,max_sales), main = "Sales vs Time")
+```
+
+Observing both figures, it can be seen that there are multiple outliers present in the dataset that will need to be addressed. This process will be discussed later in the report. Lastly, a correlation plot was produced to visualize any dependencies that could exist between the numeric features.
+
+```{r}
+library(corrplot)
+
+# Evaluate correlation between variables 
+cor_result <- cor(numeric_data)
+
+corrplot(cor_result, type = "upper", order = "hclust", tl.col = "black", tl.srt = 45)
+
+```
+From the correlation plot, we can observe that certain variables are positively correlated. Sales and shipping cost as well as profit and sales seem to be the most heavily correlated variables, which intuitively makes sense. 
+
+```{r}
+############################################################################################ Data Preparation ##########################
+####################################################################
+```
+
+```{r}
+##################### Outlier Treatment ############################
+```
+
+
+```{r}
+# Percentile Capping for outlier treatment
+pcap <- function(x){
+  for (i in which(sapply(x, is.numeric))) {
+    quantiles <- quantile( x[,i], c(.05, .95 ), na.rm =TRUE)
+    x[,i] = ifelse(x[,i] < quantiles[1] , quantiles[1], x[,i])
+    x[,i] = ifelse(x[,i] > quantiles[2] , quantiles[2], x[,i])}
+  x}
+```
+
+```{r}
+# Remove the row ID
+raw_data = raw_data[,-c(1)]
+```
+
+```{r}
+# Applying the percentile capping function
+raw_data = pcap(raw_data)
+```
+
+```{r,echo=FALSE,include=FALSE}
+# Determine the percentage of missing values per column in the data table
+pMiss = function(x){sum(is.na(x))/length(x)*100}
+apply(raw_data,2,pMiss)
+
+# Missing values
+raw_data = na.omit(raw_data)
+```
+
+```{r}
+################################################################################################# Modelling ############################
+####################################################################
+```
+# Modelling
+
+```{r}
+####################################################################################### Unsupervised Modelling #########################
+####################################################################
+```
+## Unsupervised Modelling
+
+### Market Basket Analysis and Apriori
+
+```{r,echo=FALSE, include=FALSE}
+library(arules)
+library(tinytex)
+library(latexpdf)
+library(RColorBrewer)
+library(arulesViz)
+```
+
+We will use the Market Basket Analysis and The Apriori Algorithm to see what kind of products that cutomers usually purchase together.
+
+```{r}
+data = copy_data
+#data = read.csv("superstore_dataset2011-2015.csv", header = TRUE,na.strings = c("NA","","#NA"))
+```
+
+```{r}
+dim(data)
+```
+
+We will use the Association Rule Mining method to find frequent patterns in the transaction of 2011 to 2015. By knowing what items that customers frequently buy together, it will generate a set of rules. Store owner will use those rules for many marketing strategies:
+
+ * Change the store layout according to trends
+ * Customer behavior analysis
+ * Catalogs design
+ * Cross marketing on online stores
+ * Customer emails with add-on sales
+ * Consumer items-buys trending
+ 
+First, let check how many unique Order.ID in the whole dataset. Order.ID was assigned to each transaction.
+ 
+```{r}
+length(unique(data$Order.ID))
+```
+
+There are a total 25035 unique Order.ID. That means there might be more than 1 times of product in each transaction. We will find out the pattern what kind of products that customers usually purchase together.So that the store can rearrange the outlays of products, either put them together to maximize the sales of relevant products or put them far apart so that customer have chance to see other products.
+
+Then, we will check how many kinds of products in total have been sold in the 4 year range.
+
+```{r}
+length(unique(data$Product.Name))
+```
+
+There are 3788 kinds of products names. Remove “,” in the column of products description for creating a transaction data.
+
+```{r}
+head(data$Product.Name)
+```
+
+```{r}
+data <- data.frame(lapply(data, function(x) {
+                  gsub(",", " ", x)
+             }))
+```
+### Apply Market Basket Analysis Method
+
+We use the Apriori “transaction” function to create a sparse matrix representing the all transactions and product name has been sold. Other attribute will not appear to the sparse matrix.
+
+```{r}
+transactions = as(split(data[,"Product.Name"], data[,"Order.ID"]),"transactions")
+```
+Let’s have a general look and the transactions information.
+```{r}
+summary(transactions)
+```
+There are 25035 transactions (row) and 3788 items (columns). The rows of transactions reflect the total number of Order.ID; the columns of items reflect the total Products.Name in the raw dataset.
+Density is 0.000540405. Density tells us the percentage of non-zero cells in a sparse matrix. We can calculate how many items were purchased by using the density.
+
+```{r}
+25035 *3788 *0.000540405
+```
+### Visualization of the MBA.
+
+Using "itemFrequencyPlot" to visualize the distribution of frequency of items that purchase. It can be evaluate base on absolute numbers of relative proportion.
+
+```{r}
+itemFrequencyPlot(transactions, topN = 20, type="absolute",col=brewer.pal(8,"Pastel2"), main="Absolute Item Frequency Plot")
+```
+
+Absolute will plot numeric frequencies of each item independently.
+
+```{r}
+itemFrequencyPlot(transactions, topN = 20, type="relative",col=brewer.pal(8,"Pastel2"), main="Relative Item Frequency Plot")
+```
+Relative plot will show how many times these items have appeared as compared to others.
+
+### Generating Rules
+
+Using Apriori algorithm to generate association rules.
+```{r}
+rules = apriori(transactions, parameter = list(supp = 0.00007, conf=0.8, maxlen=10))
+```
+There are total 1625 rules generated. Let’s select the top 10 rules to have a look.
+```{r}
+inspect(rules[1:10])
+```
+Explanation of the rules:
+
+For example the top one rule explains that 79.88% transaction show “Ativa V4110MDD Micro-Cut Shredder” is bought with purchase of “Staples”; 100% of customers who purchase “Ativa V4110MDD Micro-cut Shredder” also bought “Staples”.
+
+Removing redundant rules
+```{r}
+subset = which(colSums(is.subset(rules,rules))>1)
+```
+```{r}
+length(subset)
+```
+There are 1622 which are subset rules. There are only 3 main rules.
+```{r}
+subset.rules = rules[-subset]
+```
+```{r}
+staples.rules = apriori(transactions, parameter = list(supp=0.00005, conf=0.8),appearance = list(default="lhs",rhs="Staples"))
+```
+Check rules by giving a item, for example “staples.rules”
+```{r}
+inspect(head(staples.rules))
+```
+### Visualization of Association Rules
+
+```{r}
+subRules = rules[quality(rules)$confidence>0.5]
+```
+```{r}
+plot(subRules)
+```
+
+The above plot shows that rules with higher lift have a little less support. But in general it was evenly spread.
+
+```{r}
+plot(subRules,method = "two-key plot")
+```
+
+Above two-key plot shows support and confidence respectively. The order shows how many items in the relevant rule.
+Use Parallel Coordinates Plot to check individual rule representation. The plot will explain which products along with which items cause what kind of sales.
+
+```{r}
+top10subRules = head(subRules, n =10, by="confidence")
+```
+
+```{r}
+saveAsGraph(head(subRules, n=1000, by = "lift"), file="rules.graphml")
+```
+
+```{r}
+subRules2 = head(subRules, n=20, by="lift")
+plot(subRules2,method="paracoord")
+```
+
+The above plot shows that if a customer bought “Memorex Flash Drive USB” and “Motorola Audio Dock with Caller ID”, the customer is likely to buy ”Jiffy Mailers Set of 50".
+
+
+```{r}
+######################################################################################### Supervised Modelling #########################
+####################################################################
+```
+## Supervised Modelling
+
+```{r}
+################### Linear Regression Model ########################
+```
+### Linear Regression Model
+
+This practice is to see if we can predict the sales based on some certain cities, customer information, Month, and year. To predict the sales value, Linear Regression is chosen. The data exploration and data pre-processing occur are done at the same time. 
+
+```{r}
+originalDataSet = copy_data
+
+originalDataSetReLocale <-read.csv(file.choose(), sep=";")
+originalStateNameSt<-read.csv(file.choose())
+ 
+set.seed(198)
+ssds <- originalDataSet
+```
+
+To narrow down our target, the target becomes the United States. So we extracted the united states. In addition, for this trial, we disregarded some actual numeric values, such as profit, quantity, shipping.cost, and so on.
+
+```{r, include=FALSE}
+library(stringr)
+library(dplyr)
+newStateInfo<-inner_join(originalDataSetReLocale, originalStateNameSt, by=c("State"="sh1"))
+newCityStateInfo<-newStateInfo%>%select(City, name, Latitude, Longitude)
+newCityStateInfo<-data.frame(newCityStateInfo)
+colnames(newCityStateInfo)<-c("City", "State", "Latitude2", "Longitude2")
+
+newCityStateInfo<-newCityStateInfo%>%group_by(City, State)%>%
+  top_n(1)
+newDataSSd<-inner_join(ssds,newCityStateInfo,by=c("City", "State"))
+colnames(newDataSSd%>%select(-Latitude2, -Longitude2))
+newDataSSd<-newDataSSd%>%distinct(Customer.ID, Order.Date,Ship.Date,Ship.Mode,Customer.Name,Segment,City,State,Country,Market,Region,Product.ID,Category,Sub.Category,Product.Name,Sales,Quantity,Discount,Profit,Shipping.Cost, Order.Priority)
+
+ssds<-newDataSSd
+ssds$Row.ID<-NULL
+ssds$Order.ID<-NULL
+ssds$Postal.Code<-NULL
+ssds$Product.Name<-NULL
+ssds$Shipping.Cost<-NULL
+ssds$Quantity<-NULL
+ssds$Profit<-NULL
+ssds$Customer.Name<-NULL
+ssds$Discount<-NULL
+ssds$Product.ID<-NULL
+
+ssds <- ssds%>%filter(Country=='United States')
+ssds <- ssds%>%filter(!is.na(ssds))
+# ssds <- ssds%>%filter(Product.ID!="NA")
+ssds <- ssds%>%filter(str_count(Order.Priority)<10)
+ssds$Sales<-as.numeric(ssds$Sales)
+```
+
+we are not considering the day, but the month and year, so we extracted the month and year from the date data.
+
+```{r}
+library(lubridate)
+ssds$Order.Date<-gsub("-", "/", ssds$Order.Date)
+ssds$Order.Date<-as.Date(ssds$Order.Date,"%d/%m/%Y")
+ssds$Ship.Date<-gsub("-", "/", ssds$Ship.Date)
+ssds$Ship.Date<-as.Date(ssds$Ship.Date,"%d/%m/%Y")
+ssds$Month<-month(as.POSIXlt(ssds$Order.Date, format="%d/%m/%Y"))
+ssds$Year<-year(as.POSIXlt(ssds$Order.Date, format="%d/%m/%Y"))
+
+ssds$Ship.Date<-NULL
+ssds$Order.Date<-NULL
+
+```
+
+
+```{r}
+ssds$Ship.Mode<-as.factor(ssds$Ship.Mode)
+ssds$Segment<-as.factor(ssds$Segment)
+ssds$Country<-as.factor(ssds$Country)
+ssds$Market<-as.factor(ssds$Market)
+ssds$Region<-as.factor(ssds$Region)
+# ssds$Category<-as.factor(ssds$Category)
+ssds$Order.Priority<-as.factor(ssds$Order.Priority)
+#ssds$City<-as.factor(ssds$City)
+#ssds$Sub.Category<-as.factor(ssds$Sub.Category)
+head(ssds)
+str(ssds)
+```
+
+Check the outliers of the numeric data
+
+```{r}
+ggplot(ssds, aes(x=State, y = Sales))+ geom_boxplot(width=0.8, outlier.size=3, outlier.shape=16, outlier.colour="red") + stat_summary(fun.y="mean", geom="point", shape=21, size=3, fill="blue") + ggtitle("Box Plot by Country, adding mean")
+
+summary(ssds$Sales)
+summary(ssds$Month)
+summary(ssds$Year)
+#     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+#     0.444    16.394    47.965   224.134   194.657 22638.480 
+```
+
+Outlier treated
+```{r}
+pcap <- function(x){
+  for (i in which(sapply(x, is.numeric))) {
+    quantiles <- quantile( x[,i], c(.05, .95 ), na.rm =TRUE)
+    x[,i] = ifelse(x[,i] < quantiles[1] , quantiles[1], x[,i])
+    x[,i] = ifelse(x[,i] > quantiles[2] , quantiles[2], x[,i])}
+  x}
+
+
+ssds<-pcap(ssds)
+
+ggplot(ssds, aes(x=State, y = Sales))+ geom_boxplot(width=0.8, outlier.size=3, outlier.shape=16, outlier.colour="red") + stat_summary(fun.y="mean", geom="point", shape=21, size=3, fill="blue") + ggtitle("Box Plot by Country, adding mean")
+```
+
+
+```{r}
+summary(ssds$Sales)
+summary(ssds$Month)
+summary(ssds$Year)
+# Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+# 4.922  16.394  47.965 163.982 194.657 899.239 
+```
+
+```{r}
+library(ggplot2)
+```
+
+
+```{r}
+
+barplot(table(ssds$Segment), main = 'Segment', ylab = 'Count', las = 1 )
+```
+
+```{r}
+barplot(table(ssds$Ship.Mode), main = 'Ship.Mode', ylab = 'Count', las = 1 )
+```
+
+```{r}
+barplot(table(ssds$City), main = 'City', ylab = 'Count', las = 1 )
+```
+
+```{r}
+barplot(table(ssds$State), main = 'State', ylab = 'Count', las = 1 )
+```
+
+```{r}
+barplot(table(ssds$Region), main = 'Region', ylab = 'Count', las = 1 )
+```
+
+```{r}
+library(treemap)
+
+attach(ssds)
+seg.total.sales=data.frame(aggregate(Sales, by=list(Segment=Segment), FUN=sum))
+colnames(seg.total.sales)<- c("Segment","totalSale")
+#print(seg.total.sales)
+
+ggplot() + geom_bar(data=seg.total.sales, aes(x=reorder(Segment, totalSale), y=totalSale), stat='identity')+ coord_flip()
+
+```
+
+```{r}
+attach(ssds)
+state.total.Sales=aggregate(Sales, by=list(State=State), FUN=sum)
+colnames(state.total.Sales)<- c("state","totalSales")
+#print(state.total.Sales)
+ggplot() + geom_bar(data=state.total.Sales, aes(x=reorder(state, totalSales), y=totalSales), stat='identity')+ coord_flip()
+```
+
+```{r}
+region.total.Sales=aggregate(Sales, by=list(Region=Region), FUN=sum)
+colnames(region.total.Sales)<- c("region","totalSales")
+#print(region.total.Sales)
+ggplot() + geom_bar(data=region.total.Sales, aes(x=reorder(region, totalSales), y=totalSales), stat='identity')+ coord_flip()
+```
+
+```{r}
+category.total.Sales=aggregate(Sales, by=list(Category=Category), FUN=sum)
+colnames(category.total.Sales)<- c("category","totalSales")
+#print(category.total.Sales)
+ggplot() + geom_bar(data=category.total.Sales, aes(x=reorder(category, totalSales), y=totalSales), stat='identity')+ coord_flip()
+```
+
+```{r}
+sub.cat.total.Sales=aggregate(Sales, by=list(Segment=Sub.Category), FUN=sum)
+colnames(sub.cat.total.Sales)<- c("sub.category","totalSales")
+#print(sub.cat.total.Sales)
+ggplot() + geom_bar(data=sub.cat.total.Sales, aes(x=reorder(sub.category, totalSales), y=totalSales), stat='identity')+ coord_flip()
+```
+
+```{r}
+sort(table(ssds$State), decreasing = TRUE)
+gplot.state.portion = ggplot(ssds, aes(x=character(1), fill=State))+
+   geom_bar(width=1, colour="black")+
+   coord_polar(theta="y")+
+   theme_void()
+print(gplot.state.portion)
+```
+
+```{r}
+sort(table(ssds$City), decreasing = TRUE)
+gplot.city.portion = ggplot(ssds, aes(x=character(1), fill=State))+
+   geom_bar(width=1, colour="black")+
+   coord_polar(theta="y")+
+   theme_void()
+print(gplot.city.portion)
+```
+
+```{r}
+gplot.sub.cat.portion = ggplot(ssds, aes(x=character(1), fill=Sub.Category))+
+   geom_bar(width=1, colour="black")+
+   coord_polar(theta="y")+
+   theme_void()
+print(gplot.sub.cat.portion)
+```
+
+```{r}
+gplot.reg.portion = ggplot(ssds, aes(x=character(1), fill=Region))+
+   geom_bar(width=1, colour="black")+
+   coord_polar(theta="y")+
+   theme_void()
+print(gplot.reg.portion)
+```
+
+```{r}
+gplot.cat.portion = ggplot(ssds, aes(x=character(1), fill=Category))+
+   geom_bar(width=1, colour="black")+
+   coord_polar(theta="y")+
+   theme_void()
+print(gplot.cat.portion)
+```
+
+```{r}
+gplot.month.portion = ggplot(ssds, aes(x=character(1), fill=as.character(Month)))+
+   geom_bar(width=1, colour="black")+
+   coord_polar(theta="y")+
+   theme_void()
+print(gplot.month.portion)
+```
+
+```{r}
+gplot.year.portion = ggplot(ssds, aes(x=character(1), fill=as.character(Year)))+
+   geom_bar(width=1, colour="black")+
+   coord_polar(theta="y")+
+   theme_void()
+print(gplot.year.portion)
+```
+
+Now we sum data according to the features, user, city, state, month, and year.
+
+```{r}
+sum.by.customer<-ssds%>%group_by(Customer.ID, City, State, Region, Month, Year)%>%
+   summarise(summedSaleByCustomer = sum(Sales))
+
+sum.by.city<-ssds%>%group_by(City, State, Month, Year)%>%summarise(summedSalesByCity=sum(Sales))
+
+ original.Month<-sum.by.city$Month
+ original.Year<-sum.by.city$Year
+
+```
+
+
+```{r}
+library(rpart)
+library(party)
+library(e1071)
+library(nnet)
+library(ROSE)
+
+tempDtForDt<-sum.by.customer
+dt = rpart(summedSaleByCustomer~., tempDtForDt)
+dt.importance = data.frame(Importance=dt$variable.importance)
+print(dt.importance)
+
+#Product.ID, Shipping.Cost, Profit, Customer.Name, Sub.Category, City, Quantity, State, Order.Priority
+```
+The most important features for prediction are Customer.Id to Year
+
+```{r}
+nd<-sum.by.customer
+nd = nd[duplicated(nd$City),]
+nd$Month = as.numeric(nd$Month)
+nd$Year = as.numeric(nd$Year)
+```
+
+
+```{r}
+library(ROSE)
+library(caret)
+
+sample_split = createDataPartition(nd$summedSaleByCustomer, p = 0.7, list=FALSE)
+trainData = nd[-sample_split,]
+testData = nd[sample_split,]
+getFilteredTestByGivenFeature<-function(testDtSet, testFeature, trainFeature){
+  featureValList = levels(as.factor(trainFeature))
+  tempList=unlist(lapply(testFeature, function(x){
+      if(x %in% featureValList){
+        return(x)
+      }
+      return("NA")
+    }))
+  newSet <- data.frame(cbind(testDtSet, filteredList=tempList))
+  newSet <- newSet%>%filter(filteredList!="NA")
+  newSet <- newSet%>%select(-filteredList)
+  
+  return(newSet)
+}
+
+```
+
+```{r}
+newTestDataSet<-getFilteredTestByGivenFeature(testData, testData$City, trainData$City)
+newTestDataSet<-getFilteredTestByGivenFeature(newTestDataSet, newTestDataSet$Customer.ID, trainData$Customer.ID)
+newTestDataSet<-getFilteredTestByGivenFeature(newTestDataSet, newTestDataSet$State, trainData$State)
+
+library(e1071)
+
+fit2 <- lm(summedSaleByCustomer~., data=trainData)
+```
+
+
+```{r}
+
+predicted.value2<-predict(fit2, newdata=newTestDataSet%>%select(-summedSaleByCustomer), interval = c("none", "confidence", "prediction"))
+
+result2 = cbind(newTestDataSet, predicted.value2)
+head(result2)
+
+```
+To draw a result on the US map, we need to join with the longitude and latitude data. 
+```{r}
+citStateInfo<-inner_join(result2,newCityStateInfo,by=c("City", "State"))
+
+citStateInfo<-citStateInfo%>%distinct(City, State, Region, Month, Year, summedSaleByCustomer, predicted.value2, Latitude2, Longitude2)
+```
+
+Evaluation
+```{r}
+dataDifference <- result2
+dataDifference$difference <- (result2$summedSaleByCustomer-result2$predicted.value2)
+head(dataDifference)
+ggplot(data=dataDifference, aes(x=State, y=difference)) + geom_point(aes(size=difference, color=Region))
+```
+
+As the result shows, it is hard to predict the Regional Sales result based on its customer's location, City, State, and Regions. We may need more information to predict the Sales according to the month and year.
+
+```{r}
+################## Time Series Analysis ############################
+```
+### Time Series Analysis
+
+
+```{r}
+# Load in the raw data
+#data=read.csv(file.choose(), header = TRUE, na.strings = c("NA","","#NA"))
+# Create a copy of the data
+#copy_data = data
+```
+
+
+```{r}
+# Delete Columns
+raw_data2 = copy_data[ , -c(6,7,12,15,18)]
+
+# Specify columns as dates
+raw_data2$Order.Date = as.Date(raw_data2$Order.Date,"%d/%m/%Y")
+raw_data2$Ship.Date = as.Date(raw_data2$Ship.Date,"%d/%m/%Y")
+              
+                 
+```
+
+Number of rows and columns 
+
+```{r}
+#check # of rows
+ncol(raw_data2)
+nrow(raw_data2)
+```
+
+Plot of US sales 
+
+```{r}
+library(dplyr)
+library(ggplot2)
+
+p1 <- raw_data2 %>%
+  filter(Country == "United States") %>%
+  ggplot(aes(x = "United States", fill = Sales)) +
+    geom_bar(alpha = 0.8) +
+    theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) +
+    guides(fill = FALSE) +
+    labs(x = "")
+p1
+```
+
+
+Sales of countries other than the US 
+
+```{r}
+
+p2 <- raw_data2 %>%
+  filter(Country != "United States") %>%
+  ggplot(aes(x = Country, fill = Sales)) +
+    geom_bar(alpha = 0.8) +
+    theme(legend.position = "right") +
+    theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) +
+    labs(x = "",
+         fill = "")
+
+p2
+
+```
+
+
+
+The main customer base is the US 
+
+We will remove the countries under a certain level of sales.
+
+The range of sales is :
+
+
+```{r}
+range(raw_data2$Sales)
+```
+
+Remove the rows which have Sales below 5000 
+
+```{r}
+
+select_raw_data2<-subset(raw_data2, Sales >= 5000)
+head(select_raw_data2)
+```
+
+
+The new  range of Sales and countries that have sales above 5000
+
+```{r}
+range(select_raw_data2$Sales)
+#unique countries 
+unique(select_raw_data2$Country)
+```
+
+Sales in countries other than the US with sales >= 5000
+
+```{r}
+
+p2 <- select_raw_data2 %>%
+  filter(Country != "United States") %>%
+  ggplot(aes(x = Country, fill = Sales)) +
+    geom_bar(alpha = 0.8) +
+    #scale_fill_manual(values = palette_light()) +
+    #theme_tq() +
+    theme(legend.position = "right") +
+    theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) +
+    labs(x = "",
+         fill = "")
+
+p2
+
+
+
+```
+
+
+Generate Time series plot of the entire dataset 
+`
+
+```{r}
+
+library(zoo)
+select_raw_data2$Order.Date <- as.yearmon(select_raw_data2$Order.Date)
+
+head(select_raw_data2)
+```
+
+
+Filter the Order.Date and Sales to used for the timeseries 
+
+
+
+```{r}
+
+
+summary <- select_raw_data2 %>%
+  select(Order.Date, Sales) %>%
+  filter(Order.Date >= "2011-01-01") %>%
+  filter(Order.Date <= "2014-12-31")
+
+head(summary)
+tseries <- ts(summary, start = c(2011, 1), end = c(2014,12), frequency = 12)
+
+
+
+```
+
+
+Check the start, end , frequency of the time series 
+
+
+```{r echo = FALSE}
+
+start(tseries)
+end(tseries)
+deltat(tseries)
+frequency(tseries)
+time(tseries)
+cycle(tseries)
+print(tseries)
+
+```
+
+
+
+Plotting the time series for 2011-2014 to know the Seasonality  
+
+```{r}
+
+
+# Use ts.plot 
+ts.plot(tseries, col = 1:4, xlab = "Time", ylab = "Sales", main = "Seasonality - Sales  2011 to 2014 ")
+
+
+```
+
+
+
+```{r}
+
+acf(tseries, pl=FALSE)
+
+
+acf(tseries, lag.max= 12, main=("Corelleogram for 2011 - 2014"))
+
+
+```
+
+Now we explore time series data for each year separately 
+
+
+Get the rows for sales in 2011 
+
+```{r}
+
+
+summary2011 <- select_raw_data2 %>%
+  select(Order.Date, Sales) %>%
+  filter(Order.Date >= "2011-01-01") %>%
+  filter(Order.Date <= "2011-12-31")
+  
+  
+View(summary2011) 
+```
+
+Get only the year and month from the Order Date 
+
+
+```{r}
+
+library(zoo)
+summary2011$Order.Date <- as.yearmon(summary2011$Order.Date)
+
+head(summary2011)
+```
+
+
+```{r}
+
+# Check whether data_vector and time_series are ts objects
+is.ts(summary2011)
+
+```
+
+
+Convert to time series object 
+Time series object for 2011 sales 
+
+
+
+```{r}
+
+
+tseries2011 <- ts(summary2011, start = c(2011, 1), end = c(2011,12), frequency = 12)
+
+print(tseries2011)
+
+is.ts(tseries2011)
+```
+
+
+Check the start, end , frequency of the time series 
+
+```{r}
+start(tseries2011)
+end(tseries2011)
+deltat(tseries2011)
+frequency(tseries2011)
+time(tseries2011)
+cycle(tseries2011)
+print(tseries2011)
+```
+
+
+```{r}
+# Check whether is a ts object
+is.ts(tseries2011)
+
+```
+
+
+Plotting the time series for 2011 to show the Trend in 2011 
+
+```{r}
+
+# Use ts.plot 
+ts.plot(tseries2011, col = 1:4, xlab = "Time", ylab = "Sales", main = "Trend of Sales in 2011")
+
+```
+
+
+```{r}
+
+acf(tseries2011, pl=FALSE)
+
+
+acf(tseries2011, lag.max= 12, main=("Corelleogram for 2011"))
+
+
+```
+
+
+Autocorrelation measures the relationship between a variable’s current values and its historical values.
+
+
+
+Trend refers to the increasing or decreasing values in a given time series.
+
+
+
+```{r}
+
+
+summary2012 <- raw_data2 %>%
+  select(Order.Date, Sales) %>%
+  filter(Order.Date >= "2011-12-31") %>%
+  filter(Order.Date <= "2012-12-31")
+  
+View(summary2012) 
+```
+
+
+
+```{r}
+
+
+tseries2012 <- ts(summary2012, start = c(2012, 1), end = c(2012,12), frequency = 12)
+
+print(tseries2012)
+
+```
+
+Check the start, end of the time series 
+
+```{r}
+
+start(tseries2012)
+end(tseries2012)
+deltat(tseries2012)
+frequency(tseries2012)
+time(tseries2012)
+cycle(tseries2012)
+print(tseries2012)
+
+
+
+```
+
+There is only one sale in 2012 over $5000. Not enough data for the timeseries
+
+
+2013 
+
+Get the rows for sales in 2013 
+
+
+```{r}
+
+
+summary2013 <- raw_data2 %>%
+  select(Order.Date, Sales) %>%
+  filter(Order.Date >= "2012-12-31") %>%
+  filter(Order.Date <= "2013-12-31")
+  
+View(summary2013) 
+```
+
+Get only the year and month form the Order Date 
+
+```{r}
+
+library(zoo)
+summary2013$Order.Date <- as.yearmon(summary2013$Order.Date)
+
+head(summary2013)
+```
+
+
+
+```{r}
+
+# Check whether data_vector and time_series are ts objects
+is.ts(summary2013)
+
+```
+
+
+Convert to time series object 
+Time series object for 2013 sales 
+
+```{r}
+
+
+tseries2013 <- ts(summary2013, start = c(2013, 1), end = c(2013,12), frequency = 12)
+
+print(tseries2013)
+
+is.ts(tseries2013)
+```
+
+
+
+Check the start, end of the time series 
+
+```{r}
+
+start(tseries2013)
+end(tseries2013)
+deltat(tseries2013)
+frequency(tseries2013)
+time(tseries2013)
+cycle(tseries2013)
+print(tseries2013)
+
+
+
+```
+
+
+Check if the time series object was generated 
+
+```{r}
+# Check whether is a ts object
+is.ts(tseries2013)
+
+
+
+```
+
+```{r}
+
+# Use ts.plot with eu_stocks
+ts.plot(tseries2013, col = 1:4, xlab = "time", ylab = "sales", main = "sales")
+
+```
+
+
+When the autocorrelation in a time series is high, it becomes easy to predict future values by simply referring to past values.
+
+```{r}
+acf(tseries2013, main=("Corelleogram"))
+
+
+```
+
+
+
+2014
+
+
+Get the rows for sales in 2014 
+
+```{r}
+
+
+summary2014 <- select_raw_data2 %>%
+  select(Order.Date, Sales) %>%
+  filter(Order.Date >= "2014-01-01") %>%
+  filter(Order.Date <= "2014-12-31")
+  
+  
+View(summary2013) 
+```
+
+Get only the year and month form the Order Date 
+
+```{r}
+
+library(zoo)
+summary2014$Order.Date <- as.yearmon(summary2014$Order.Date)
+
+head(summary2014)
+```
+
+
+
+
+```{r}
+
+# Check whether data_vector and time_series are ts objects
+is.ts(summary2014)
+
+```
+
+
+
+Convert to time series object 
+Time series object for 2011 sales 
+
+```{r}
+
+
+tseries2014 <- ts(summary2014, start = c(2014, 1), end = c(2014,12), frequency = 12)
+
+print(tseries2014)
+
+is.ts(tseries2014)
+```
+
+
+Check the start, end of the time series 
+
+```{r}
+
+start(tseries2014)
+end(tseries2014)
+deltat(tseries2014)
+frequency(tseries2014)
+time(tseries2014)
+cycle(tseries2014)
+print(tseries2014)
+
+
+
+```
+
+Check if the time series object was generated 
+
+```{r}
+# Check whether is a ts object
+is.ts(tseries2014)
+
+
+
+```
+
+
+
+```{r}
+
+# Use ts.plot with eu_stocks
+ts.plot(tseries2014, col = 1:4, xlab = "time", ylab = "sales", main = "Sales in 2014 ")
+
+```
+
+
+When the autocorrelation in a time series is high, it becomes easy to predict future values by simply referring to past values.
+
+```{r}
+acf(tseries2014, main=("Corelleogram"))
+
+
+```
+
+
+We have plotted the timeseries to look for Seasonality in the 4 year and trends in each on the 4 years.
+Also, we have plotted the autocorrelation function to try and dig more into the data.
+Wecould use statistical tests to know whether or not the data is auto correlated.
+
+
+
+
+```{r}
+############# Random Forest Regression Model #######################
+```
+### Random Forest Regression Model
+
+Random Forest is a classification algorithm used in supervised machine learning and consists of constructing multiple decision trees during training and outputs the mode of the predicted variable of each decision tree. For the current application, the predicted variable is the dollar amount of sales. The Random Forest function in R allows the user to customize multiple input parameters, including among other, the number of trees, number of features, tree depth and the minimum leaf size. This Random Forest model uses the default parameters available in R, with the sole exception being the number of trees. The former was set to 100, as numbers above started to affect processing time. Additionally, observing the graph which shows the model error as a function of the number of trees, it could be seen that after 100 trees, the deviation in error values decreased significantly, another reason why the number of trees parameter was set to 100.
+
+```{r}
+library(caTools)
+
+# Split the dataset into training and testing sets
+raw_data$Ship.Mode = as.factor(raw_data$Ship.Mode)
+raw_data$Segment = as.factor(raw_data$Segment)
+raw_data$City = as.factor(raw_data$City)
+raw_data$State = as.factor(raw_data$State)
+raw_data$Country = as.factor(raw_data$Country)
+raw_data$Market = as.factor(raw_data$Market)
+raw_data$Region = as.factor(raw_data$Region)
+raw_data$Category = as.factor(raw_data$Category)
+raw_data$Sub.Category = as.factor(raw_data$Sub.Category)
+raw_data$Order.Priority = as.factor(raw_data$Order.Priority)
+
+# Due to random forest limitations need to remove city, state and country
+raw_data = raw_data[,-c(1,2,5,6,7)]
+
+
+split = sample.split(raw_data, SplitRatio = 0.7)
+train = subset(raw_data, split == TRUE)
+test = subset(raw_data, split == FALSE)
+
+# Remove target variable from the test set
+testing = test[,-c(7)]
+```
+Prior to running the Random Forest model, features the following features were set to be treated as factors: Ship.mode, segment, city, state, country, market, region, category, sub.category and priority. The remaining values were left as numeric. During the initial run of the model, an error was encountered which stated that the Random Forest function in R could not handle features with more than 53 unique categories. This affected three features directly: city, state and country which had 3636,1094 and 145 unique values. Given this information, those features were excluded from the analysis. Both the market and region features provided us with location information at a higher level.
+
+```{r, include=FALSE}
+library(randomForest)
+```
+
+
+```{r,echo= FALSE}
+set.seed(123)
+rf_model <- randomForest(train$Sales ~ .,data = train, importance= TRUE, ntree = 100)
+```
+Here is a summary of the generated Random Forest model:
+
+```{r}
+# Print the random forest model
+print(rf_model)
+```
+
+Then, using the generated model, the mean of squared residuals error was plotted against the number of trees.
+
+```{r}
+#Plot the error versus number of trees
+plot(rf_model,main = "Error vs Number of Trees")
+```
+
+As stated previously, it can be seen that the deviation in error significantly decreases as the number of trees approaches 100. Additionally, the variable importance was determined and is shown in the figure below: 
+
+```{r}
+# Visualize the variable importance
+
+varImpPlot(rf_model, main="")
+```
+
+It is important to note, that the current list of variables shown reflects the most recent model. After initially running the Random Forest algorithm and visualizing the relative importance of the variables, the features that were identified as low importance, were removed from the dataset and the algorithm was re-applied in an attempt to improve the performance. 
+
+```{r}
+library(ROCR)
+
+# Prediction using the model
+pred = predict(rf_model,testing)
+
+# Calculate the percent difference between actual and predicted
+value <- vector()
+for (i in 1:nrow(test))
+{
+  value[i] = abs(pred[[i]]-test$Sales[i])/test$Sales[i]
+  }
+```
+
+Lastly, we needed to evaluate and measure the performance of the model. As this was a regression application, we could not use a confusion matrix to determine accuracy. Instead, we directly compared the predicted and actual values using the relative error, described by the following equation:
+
+$$error_{relative} = \frac{|sales_{predict} - sales_{actual}|}{sales_{actual}}  $$
+where sales_predict is the predicted sales value obtained from the model and the sales_actual parameter, is the actual sales data from the original dataset. Once the relative error was calculated for each observation, the values where visualized on a scatter plot, shown in the figure below.
+
+```{r}
+library(ggplot2)
+
+plot(value, main = "Random Forest Model - Relative Error")
+```
+
+Observing the figure above, it can be seen that the Random forest model performed quite poorly, having frequent cases where the relative error exceeded 100%. After completed our analysis using the Random Forest algorithm, we determined that it was not the best choice for predicting sales and thus did not select it as our final model.   
