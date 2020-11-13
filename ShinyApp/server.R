@@ -37,7 +37,6 @@ library(e1071)
 library(tinytex)
 library(fpc)
 library(data.table)
-library(jcolors)
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
