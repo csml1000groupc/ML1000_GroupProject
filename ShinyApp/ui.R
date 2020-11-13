@@ -40,13 +40,13 @@ shinyUI(fluidPage(
                  sidebarLayout(
                      sidebarPanel(
                          helpText("
-                            In the future release, the following button will generate a list of the products fitting the customers' preference for the advertisement.
+                            In the future release, the following button will generate a list of the products fitting the customers' preference for the advertisement purpose.
                          "),
                          actionButton("recommend", "Generate")
                      ),
                      mainPanel(
                          tabPanel("Contruction is going on", 
-                              helpText("The Service will be later release. In this release, the Market Basket Analysis and The Apriori Algorithm to see what kind of products that cutomers usually purchase together, which is tated in the report, will generate the brochure or the list of the products satisfying the customers' taste.")
+                              helpText("The Service will be in the future release. In this release, the Market Basket Analysis and The Apriori Algorithm to see what kind of products that cutomers usually purchase together, which is stated in the report, will generate the list table of the products satisfying the customers' taste.")
                          )
                      )
                  )
