@@ -42,7 +42,7 @@ shinyUI(fluidPage(
                          helpText("
                             In the future release, the following button will generate a list of the products fitting the customers' preference for the advertisement purpose.
                          "),
-                         actionButton("recommend", "Generate")
+                         actionButton("recommend", "Generate"),helpText("will be active in the future!")
                      ),
                      mainPanel(
                          tabPanel("Contruction is going on", 
