@@ -6,7 +6,7 @@ Project Title - "Predicting Sales for Superstore"
 ## Project Structure
 
 * Project presentation document: **CSML1000-Group-C-Project.pdf**.  
-* **data** folder contains the "data" having the link redirecting to the entire dataset used for the project.
+* **data** folder contains the data csv files used for the project.
 * **source** folder contains the Rmd file generating the report.
 * **shinyApp** folder includes the shiny app source code and the models trained in local environment.
 
